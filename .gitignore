@@ -3,3 +3,4 @@ input
 *.log
 node_modules
 .DS_Store
+genfors-mail-creds.json

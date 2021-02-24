@@ -4,9 +4,8 @@
     "target": "es2015",
     "outDir": "build/",
     "module": "commonjs",
-    "removeComments": true
+    "removeComments": true,
+    "resolveJsonModule": true
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
