@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "build": "yarn tsc",
-    "start": "node build/index.js"
+    "start": "node build/repos/pdfmailer/index.js"
   },
   "author": "webkom@abakus.no",
   "license": "MIT",
