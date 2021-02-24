@@ -4,6 +4,8 @@ import * as prompt from 'prompt';
 import * as nodemailer from 'nodemailer';
 import * as commandLineArgs from 'command-line-args';
 
+import * as creds from 'Path to json credentials';
+
 // DUMB SHIT to get "10.pdf" after "2.pdf"
 const collator = new Intl.Collator(undefined, {
   numeric: true,
@@ -20,11 +22,11 @@ const args = commandLineArgs([
 ]);
 
 // Read google service account from ENV
-const env = process.env || {};
-if (!env.GOOGLE_CREDENTIALS) throw new Error('No GOOGLE CREDENTIALS set');
-const creds = JSON.parse(
-  Buffer.from(env.GOOGLE_CREDENTIALS, 'base64').toString(),
-);
+// const env = process.env || {};
+// if (!env.GOOGLE_CREDENTIALS) throw new Error('No GOOGLE CREDENTIALS set');
+// const creds = JSON.parse(
+//   Buffer.from(env.GOOGLE_CREDENTIALS, 'base64').toString(),
+// );
 
 /* Create transporter with OAuth2
  *
