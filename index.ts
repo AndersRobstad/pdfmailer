@@ -4,7 +4,11 @@ import * as prompt from 'prompt';
 import * as nodemailer from 'nodemailer';
 import * as commandLineArgs from 'command-line-args';
 
-import * as creds from 'Path to json credentials';
+//Path to the credentials.
+import * as creds from 'PATH TO CREDENTIALS';
+
+//Attendees downloaded from the OW event.
+import * as attendees from './input/attendees.json';
 
 // DUMB SHIT to get "10.pdf" after "2.pdf"
 const collator = new Intl.Collator(undefined, {
@@ -79,7 +83,10 @@ async function wrapedSendMail(mailOptions: nodemailer.SendMailOptions) {
  * on each line, and one folder that has a bunch of PFDs.
  */
 const pdfs = fs.readdirSync(args.pdfs).sort(collator.compare);
-const emails = fs.readFileSync(args.emails, 'utf8').trim().split('\n');
+//const emails = fs.readFileSync(args.emails, 'utf8').trim().split('\n');
+
+//Creates a list with all the attendees emails.
+const emails = attendees.Attendees.map((e) => e.email);
 
 if (emails.length > pdfs.length)
   throw new Error('There are more emails then pdfs');
