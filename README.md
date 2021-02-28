@@ -13,9 +13,11 @@ Get the needed credentials json file saved locally, and then change the path in 
 
 ## Format the mail
 
-- Change the messagePlainText and messageHtml variables in the index.ts file to fit your event
-- Change replyTo email if neccesary
-- Change to subjecy if neccesary
+All variables can be found in the _index.ts_ file.
+
+- Change the messagePlainText and messageHtml variables to fit your event.
+- Change _replyTo_ email if neccesary
+- Change the _subject_ if neccesary
 
 ## Get the files you need
 
