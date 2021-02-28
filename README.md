@@ -40,13 +40,12 @@ The steps above will result in a folder called `pdfs` with all the pfds in them,
 
 `yarn start` takes the following args/flags.
 
-| Argument       | Flag | Value                       |
-| -------------- | ---- | --------------------------- |
-| `--from`       | `-F` | Name of the sender/org      |
-| `--ooccation`  | `-O` | Reason/Event for sending    |
-| `--from_email` | `-E` | Mail of the senders account |
-| `--pdfs`       | `-P` | Path to folder with pdfs    |
-| `--emails`     | `-M` | Path to file with emails    |
+| Argument       | Flag | Value                                              |
+| -------------- | ---- | -------------------------------------------------- |
+| `--from`       | `-F` | Name of the sender/org                             |
+| `--ooccation`  | `-O` | Reason/Event for sending                           |
+| `--from_email` | `-E` | Mail of the sender (Has to be in the bedkom group) |
+| `--pdfs`       | `-P` | Path to folder with pdfs                           |
 
 ## Check parsing and continue
 
@@ -61,22 +60,22 @@ When starting the script it will will show the targets and ask for `Y` or `yes` 
 
 ```sh
 ❯ yarn start \
---from Abakus \
+--from OnlineLinjeforening \
 --occation Generalforsamling \
---from_email admin@abakus.no \
+--from_email eks@online.ntnu.no \
+(Has to be an email that is in the bedkom g-suite group)
 --pdfs input/pdfs \
---emails input/emails
 
 yarn run v1.22.10
-$ node build/index.js --from Abakus --occation Generalforsamling --from_email admin@abakus.no --pdfs input/pdfs --emails input/emails
+$ node build/index.js --from OnlineLinjeforening --occation Generalforsamling --from_email eks@online.ntnu.no --pdfs input/pdfs
 
 =============================================
 Finished parsing mails and pdfs
 =============================================
 Assigned pdfs as follows [
-  { email: 'smith.peder@gmail.com', path: '1.pdf' },
-  { email: 'peder@abakus.no', path: '2.pdf' },
-  { email: 'reservekonto100@gmail.com', path: '3.pdf' }
+  { email: 'anders@gmail.com', path: '1.pdf' },
+  { email: 'martin@gmail.no', path: '2.pdf' },
+  { email: 'petter@gmail.com', path: '3.pdf' }
 ]
 prompt: continue:
 ```
@@ -85,24 +84,22 @@ Here you can see that everything is working as intended, and can track what emai
 
 ```sh
 =============================================
-Next target: 	 smith.peder@gmail.com
+Next target: 	 anders@gmail.com
 Using file: 	 1.pdf
 Email sent: 	 250 2.0.0 OK  1613814584 x36sm1196276lfu.129 - gsmtp
-Envelope: 	 { from: 'admin@abakus.no', to: [ 'smith.peder@gmail.com' ] }
-Accepted: 	 [ 'smith.peder@gmail.com' ]
+Envelope: 	 { from: 'eks@online.ntnu.no', to: [ 'anders@gmail.com' ] }
+Accepted: 	 [ 'anders@gmail.com' ]
 =============================================
-Next target: 	 peder@abakus.no
+Next target: 	 martin@gmail.no
 Using file: 	 2.pdf
 Email sent: 	 250 2.0.0 OK  1613814586 e5sm1248442ljj.71 - gsmtp
-Envelope: 	 { from: 'admin@abakus.no', to: [ 'peder@abakus.no' ] }
-Accepted: 	 [ 'peder@abakus.no' ]
+Envelope: 	 { from: 'eks@online.ntnu.no', to: [ 'martin@gmail.no' ] }
+Accepted: 	 [ 'martin@gmail.no' ]
 =============================================
-Next target: 	 reservekonto100@gmail.com
+Next target: 	 petter@gmail.com
 Using file: 	 3.pdf
 Email sent: 	 250 2.0.0 OK  1613814587 t14sm1249475ljc.70 - gsmtp
-Envelope: 	 { from: 'admin@abakus.no', to: [ 'reservekonto100@gmail.com' ] }
-Accepted: 	 [ 'reservekonto100@gmail.com' ]
+Envelope: 	 { from: 'eks@online.ntnu.no', to: [ 'petter@gmail.com' ] }
+Accepted: 	 [ 'petter@gmail.com' ]
 ✨  Done
 ```
-
-![image](https://i.imgur.com/G5gNeYG.png)
