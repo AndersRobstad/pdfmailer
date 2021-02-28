@@ -77,12 +77,13 @@ The script will simply **merge/fold/zip** one email with one pdf.
 
 When starting the script it will will show the targets and ask for `Y` or `yes` to continue.
 
+The from_email has to be an email in the bedkom g-suite group to work.
+
 ```sh
 ❯ yarn start \
 --from OnlineLinjeforening \
 --occation Generalforsamling \
 --from_email eks@online.ntnu.no \
-(Has to be an email that is in the bedkom g-suite group)
 --pdfs input/pdfs \
 
 yarn run v1.22.10
