@@ -111,6 +111,16 @@ prompt.get(['continue'], function (_, result) {
   }
 });
 
+const messagePlainText =
+  'Heisann! Vedlagt ligger ditt foodora-gavekort på 100kr. Dersom det skulle' +
+  'oppstå noen provlemer så kan du ta kontakt med bedriftskomiteen på' +
+  'bedkom@online.ntnu.no så skal vi bistå så godt vi kan!';
+const messageHtml =
+  '<p>Heisann!</p>' +
+  '<p>Vedlagt ligger ditt foodora-gavekort på 100kr. ' +
+  'Dersom det skulle oppstå noen problemer så kan du ta kontakt med bedriftskomiteen ' +
+  'på bedkom@online.ntnu.no så skal vi bistå så godt vi kan!</p>';
+
 // Send mail to each target while waiting for each send to complete
 async function send() {
   for (let i = 0; i < targets.length; i++) {
@@ -128,9 +138,10 @@ async function send() {
     const mailOptions = {
       to: target.email,
       from: `${args.from} <${args.from_email}>`,
-      subject: `${args.from} - ${args.occation} har sendt deg en PDF`,
-      text: 'Din PDF ligger vedlagt.',
-      html: '<h1> Du finner din PDF som vedlegg</h1>',
+      replyTo: 'bedkom@online.ntnu.no',
+      subject: `${args.occation} foodora gavekort`,
+      text: messagePlainText,
+      html: messageHtml,
       attachments: [
         {
           filename: `${args.from}_${args.occation}.pdf`,
