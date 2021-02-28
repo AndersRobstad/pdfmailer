@@ -2,25 +2,26 @@
 
 ## Development
 
-**[DISCLAIMER]** This script was tossed together and I don't know if this runs on any other config then
-mine! You are happy to try and create an issue/PR with dev fixes. I kinda piggy backed on a lot of
-my global linters/prettier/configs. I tried adding most of it into the `package.json` in order
-for others to run it.
-
 ```sh
 $ yarn
 $ tsc --watch
 ```
 
-## Production
+## Google mail credentials
 
-```sh
-# Get deps and build .js from .ts
-$ yarn
-$ yarn build
-```
+Get the needed credentials json file saved locally, and then change the path in index.ts to point correctly at this file.
 
-### Get the files you need
+## Format the mail
+
+- Change the messagePlainText and messageHtml variables in the index.ts file to fit your event
+- Change replyTo email if neccesary
+- Change to subjecy if neccesary
+
+## Get the files you need
+
+Create a folder named input, and change directory into it. Then proceed with the next step.
+
+### Pdfs from gogift
 
 This is specific for the actual use-case of the program. From **gogift** half then job is getting the
 pdfs downloaded from their `.csv`. This is not integrated in the program, but can be done with some
@@ -36,16 +37,32 @@ $ counter=0; for file in pdfs/*; do [[ -f $file ]] && mv -i "$file" $((counter+1
 
 The steps above will result in a folder called `pdfs` with all the pfds in them, named `n.pdf`
 
+### Emails for the attendees
+
+Download the json file from the event on https://old.online.ntnu.no, then place the file inside the input folder that you have created and rename it to "_attendees.json_"
+
+### Your filestructure should look like this now:
+
+<img src="https://i.imgur.com/mAZfc9n.png" alt="filestructure" width="170"/>
+
+## Production
+
+```sh
+# Get deps and build .js from .ts
+$ yarn
+$ yarn build
+```
+
 ## Run
 
 `yarn start` takes the following args/flags.
 
-| Argument       | Flag | Value                                              |
-| -------------- | ---- | -------------------------------------------------- |
-| `--from`       | `-F` | Name of the sender/org                             |
-| `--ooccation`  | `-O` | Reason/Event for sending                           |
-| `--from_email` | `-E` | Mail of the sender (Has to be in the bedkom group) |
-| `--pdfs`       | `-P` | Path to folder with pdfs                           |
+| Argument       | Flag | Value                                                              |
+| -------------- | ---- | ------------------------------------------------------------------ |
+| `--from`       | `-F` | Name of the sender/org                                             |
+| `--ooccation`  | `-O` | Reason/Event for sending                                           |
+| `--from_email` | `-E` | Mail of the sender (Has to be in the bedkom g-suite group to work) |
+| `--pdfs`       | `-P` | Path to folder with pdfs                                           |
 
 ## Check parsing and continue
 
