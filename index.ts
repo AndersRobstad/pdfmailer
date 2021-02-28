@@ -7,7 +7,7 @@ import * as commandLineArgs from 'command-line-args';
 //Path to the credentials.
 import * as creds from 'PATH TO CREDENTIALS';
 
-//Attendees downloaded from the OW event.
+//Attendees downloaded from the OW event renamed to attendees.json.
 import * as attendees from './input/attendees.json';
 
 // DUMB SHIT to get "10.pdf" after "2.pdf"
