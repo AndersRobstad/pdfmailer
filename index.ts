@@ -25,13 +25,6 @@ const args = commandLineArgs([
   { name: 'emails', alias: 'm', type: String },
 ]);
 
-// Read google service account from ENV
-// const env = process.env || {};
-// if (!env.GOOGLE_CREDENTIALS) throw new Error('No GOOGLE CREDENTIALS set');
-// const creds = JSON.parse(
-//   Buffer.from(env.GOOGLE_CREDENTIALS, 'base64').toString(),
-// );
-
 /* Create transporter with OAuth2
  *
  * This can be swapped with a SMTP transporter as shown below.
@@ -77,13 +70,11 @@ async function wrapedSendMail(mailOptions: nodemailer.SendMailOptions) {
   });
 }
 
-/* Resolve paths to emails and pdfs.
+/* Resolve paths to pdfs.
  *
- * The code expects to find a path to a file that has one email
- * on each line, and one folder that has a bunch of PFDs.
+ * The code expects to find one folder that has a bunch of PFDs.
  */
 const pdfs = fs.readdirSync(args.pdfs).sort(collator.compare);
-//const emails = fs.readFileSync(args.emails, 'utf8').trim().split('\n');
 
 //Creates a list with all the attendees emails.
 const emails = attendees.Attendees.map((e) => e.email);
@@ -111,10 +102,13 @@ prompt.get(['continue'], function (_, result) {
   }
 });
 
+//Message for people that does not have support for html formatting.
 const messagePlainText =
   'Heisann! Vedlagt ligger ditt foodora-gavekort på 100kr. Dersom det skulle' +
   'oppstå noen provlemer så kan du ta kontakt med bedriftskomiteen på' +
   'bedkom@online.ntnu.no så skal vi bistå så godt vi kan!';
+
+//Message for people that has support for html formatting.
 const messageHtml =
   '<p>Heisann!</p>' +
   '<p>Vedlagt ligger ditt foodora-gavekort på 100kr. ' +
