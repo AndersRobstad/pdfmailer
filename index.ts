@@ -22,7 +22,6 @@ const args = commandLineArgs([
   { name: 'occation', alias: 'o', type: String },
   { name: 'from_email', alias: 'e', type: String },
   { name: 'pdfs', alias: 'p', type: String },
-  { name: 'emails', alias: 'm', type: String },
 ]);
 
 /* Create transporter with OAuth2
