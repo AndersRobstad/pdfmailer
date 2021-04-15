@@ -31,7 +31,7 @@ quick `shell` commands.
 
 ```sh
 # The link to the pdf is the last column in each row, so we awk that and wget each link into ./pdfs
-$ cat gogift.csv | awk -F "\"*;\"*" '{print $NF}' | wget --no-check-certificate -E -H -k -K -p -e robots=off -Ppdfs -nH --cut-dirs=3 -i -
+$ cat gogift.csv | awk -F ';' '{print $NF}' | wget --no-check-certificate -E -H -k -K -p -e robots=off -Ppdfs -nH --cut-dirs=3 -i -
 
 # The files have no .pdf ending and have a long name so we can rename them
 $ counter=0; for file in pdfs/*; do [[ -f $file ]] && mv -i "$file" $((counter+1)).pdf && ((counter++)); done
